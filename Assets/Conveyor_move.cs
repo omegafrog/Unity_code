@@ -6,7 +6,7 @@ public class Conveyor_move : MonoBehaviour
 {
     // Start is called before the first frame update
     Renderer sr;
-    public GameObject ob;
+    public static GameObject ob;
     
     
     public float object_speed;
