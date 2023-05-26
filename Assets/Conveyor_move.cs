@@ -5,37 +5,43 @@ using UnityEngine;
 public class Conveyor_move : MonoBehaviour
 {
     // Start is called before the first frame update
+    Renderer sr;
+    public GameObject ob;
+    
+    
     public float object_speed;
     public int i;
     public static float count;
 
-    public static bool Squence_run;
     public bool object_tr;
     public static bool timer_start;
 
     void Start()
-    {
-        i = 10;
+    {   
+        sr = ob.GetComponent<Renderer>();
+        i = 13;
         count = 0;
         object_speed = 3.0f;
         object_tr = false;
         timer_start = false;
-        Squence_run = true;
     }
 
     void Update()
     {
-        i++;
-        if(Squence_run) Squence(i);
+        Squence(i);
         Move();
         Timer();
-        
-        //Debug.Log(Squence(i));
+        if(object_tr) Color_cg();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "conveyor_dt") transform.position = new Vector3(-4.274f, 1.26f, -1.788f);
+        if (other.tag == "conveyor_dt")
+        {
+            transform.position = new Vector3(-4.274f, 1.26f, -1.788f);
+            object_tr =true;
+            i++;
+        }
         if (other.tag == "conveyor_start") timer_start = true; //오브젝트 출발 확인
 
     }
@@ -52,18 +58,24 @@ public class Conveyor_move : MonoBehaviour
 
     void Move() //오브젝트 이동 제어
     {
-        if(Squence(i) == true)
-        {
-            Squence_run = false;
-            transform.Translate(Vector3.right * object_speed * Time.deltaTime);
-        }
+         transform.Translate(Vector3.right * object_speed * Time.deltaTime);
+    }
+
+    void Color_cg()
+    {
+        if (i % 2 == 0) sr.material.color = Color.yellow;
+        if (i % 3 == 1) sr.material.color = Color.blue;
+        if(Squence(i)) sr.material.color = Color.red;
     }
 
     public bool Squence(int num)
     {
         for(int i = 2; i*i<=num; i++)
         {
-            if (num % i == 0) return false;
+            if (num % i == 0)
+            {
+                return false;
+            } 
         }
         return true;
     }

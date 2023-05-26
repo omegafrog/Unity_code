@@ -25,7 +25,7 @@ public class Conveyor_button : MonoBehaviour
         {
             save_time += Conveyor_move.count;
             StartCoroutine(buttonpress(1.0f));
-            //Debug.Log(save_time);
+            Debug.Log(save_time);
         }
     }
     IEnumerator buttonpress(float delay) //버튼 입력시 효과
