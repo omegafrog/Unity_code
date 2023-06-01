@@ -23,9 +23,19 @@ public class Conveyor_button : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //버튼 입력확인
         {
-            save_time += Conveyor_move.count;
-            StartCoroutine(buttonpress(1.0f));
-            Debug.Log(save_time);
+            if (Conveyor_move.sr.material.color == Color.red)
+            {
+                Debug.Log("color is red");
+                save_time += Conveyor_move.count; //반응속도 측정값 합산
+                StartCoroutine(buttonpress(1.0f));
+            }
+            else
+            {
+                StartCoroutine(buttonpress(1.0f));
+                //붉은색이 아닌 다른색의 오브젝트에 입력시 오류추가
+                Debug.Log("error +1");
+            }
+        
         }
     }
     IEnumerator buttonpress(float delay) //버튼 입력시 효과

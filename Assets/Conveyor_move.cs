@@ -5,7 +5,7 @@ using UnityEngine;
 public class Conveyor_move : MonoBehaviour
 {
     // Start is called before the first frame update
-    Renderer sr;
+    public static Renderer sr;
     public GameObject ob;
     
     
@@ -21,7 +21,7 @@ public class Conveyor_move : MonoBehaviour
         sr = ob.GetComponent<Renderer>();
         i = 13;
         count = 0;
-        object_speed = 3.0f;
+        object_speed = 5.0f;
         object_tr = false;
         timer_start = false;
     }
