@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Login : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject LoginView;
+    [SerializeField] private TextMeshProUGUI test;
     public InputField inputField_ID;
     public InputField inputField_PW;
     public Button Button_Login;
