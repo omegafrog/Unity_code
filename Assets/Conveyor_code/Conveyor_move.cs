@@ -5,9 +5,11 @@ using UnityEngine;
 public class Conveyor_move : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int min;
+    public int max;
+    
     public static Renderer sr;
     public GameObject ob;
-    
     
     public float object_speed;
     public int i;
@@ -19,9 +21,11 @@ public class Conveyor_move : MonoBehaviour
     void Start()
     {   
         sr = ob.GetComponent<Renderer>();
-        i = 13;
+        min = 30;
+        max = 200;
+        i = Random.Range(min, max);
         count = 0;
-        object_speed = 5.0f;
+        object_speed = 4.0f;
         object_tr = false;
         timer_start = false;
     }
@@ -64,7 +68,7 @@ public class Conveyor_move : MonoBehaviour
     void Color_cg()
     {
         if (i % 2 == 0) sr.material.color = Color.yellow;
-        if (i % 3 == 1) sr.material.color = Color.blue;
+        if (i % 3 == 0) sr.material.color = Color.blue;
         if(Squence(i)) sr.material.color = Color.red;
     }
 
@@ -79,4 +83,5 @@ public class Conveyor_move : MonoBehaviour
         }
         return true;
     }
+
 }

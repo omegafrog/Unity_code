@@ -41,14 +41,19 @@ public class Menu_UI : MonoBehaviour
         Panel.SetActive(false);
         SceneManager.LoadScene("Saw_test", LoadSceneMode.Single);
     }
-    public void Maze_OP()
+    public void Menu_Conveyor()
     {
-        Maze_output.text = "충돌횟수: " + Maze_move.Trigger_Count + "번";
+        Panel.SetActive(false);
+        SceneManager.LoadScene("Conveyor_test", LoadSceneMode.Single);
     }
     /// <summary>
     /// ////////////////////////////////////////////////////////////////////////////////
     /// </summary>
     /// 
+    public void Maze_OP()
+    {
+        Maze_output.text = "충돌횟수: " + Maze_move.Trigger_Count + "번";
+    }
     public void Saw_OP()
     {
         Saw_counter.text = "진행시간: " + Move_key.count_time + "초";

@@ -1,22 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Conveyor_button : MonoBehaviour
 {
     public float move_speed = 2.0f;
-    public float save_time;
+    public float save_time; //반응시간 저장 변수값
+    int err_count; 
     // Start is called before the first frame update
     void Start()
     {
         save_time = 0;
+        err_count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Conveyor_UI.UI_check == true) Button_press();
+        Game_end();
     }
 
     void Button_press()
@@ -34,10 +38,17 @@ public class Conveyor_button : MonoBehaviour
                 StartCoroutine(buttonpress(1.0f));
                 //붉은색이 아닌 다른색의 오브젝트에 입력시 오류추가
                 Debug.Log("error +1");
+                err_count++;
             }
         
         }
     }
+
+    void Game_end()
+    {
+        if(err_count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
+    }
+
     IEnumerator buttonpress(float delay) //버튼 입력시 효과
     {
         transform.localPosition = new Vector3(0f, 0.4f, 0f);

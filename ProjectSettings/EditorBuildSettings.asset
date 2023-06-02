@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Saw_tuto.unity
     guid: 9e599b1d0215e9e4d82fc2f72238b01d
+  - enabled: 1
+    path: Assets/Scenes/Conveyor_test.unity
+    guid: f743a973de82be048adf99b177682830
   m_configObjects: {}
