@@ -50,6 +50,10 @@ public class Menu_UI : MonoBehaviour
     /// ////////////////////////////////////////////////////////////////////////////////
     /// </summary>
     /// 
+
+    /// <summary>
+    ///
+    /// 메뉴 결과창
     public void Maze_OP()
     {
         Maze_output.text = "충돌횟수: " + Maze_move.Trigger_Count + "번";
@@ -58,6 +62,8 @@ public class Menu_UI : MonoBehaviour
     {
         Saw_counter.text = "진행시간: " + Move_key.count_time + "초";
     }
+    /// </summary>
+    
     public void Saw_tuto()
     {
         Panel.SetActive(false);

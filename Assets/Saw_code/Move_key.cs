@@ -126,7 +126,7 @@ public class Move_key : MonoBehaviour
         }
     }
 
-    public void Game_rule() //벽에 닿으면 시간가속
+    public void Game_rule() //벽에 닿으면 시간가속 및 위치 초기화
     {
         if(isCollision == true)
         {
