@@ -50,7 +50,7 @@ public class Move_key : MonoBehaviour
         Game_rule();
     }
 
-    void Move()
+    void Move() //메인 오브젝트 이동함수
     {
         if (Input.GetKey(KeyCode.UpArrow)) transform.Translate(Vector3.forward * speed * Time.unscaledDeltaTime);
         if (Input.GetKey(KeyCode.DownArrow)) transform.Translate(Vector3.back * speed * Time.unscaledDeltaTime);
@@ -58,7 +58,7 @@ public class Move_key : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
     }
 
-    private void OnTriggerEnter(Collider other) //게임조건설정
+    private void OnTriggerEnter(Collider other) //충돌감지 함수
     {
         //게임완료 조건
         if (other.tag == "end_point") round1_end = true;
@@ -70,10 +70,13 @@ public class Move_key : MonoBehaviour
         if (other.tag == "saw_limit2") limit_trigger2 = true;
         if (other.tag == "saw_limit3") limit_trigger3= true;
     }
-
+    /// <summary>
+    //게임 라운드 함수
+    //3라운드로 구성되며 라운드 시작 및 종료 확인 bool함수를 사용하여 성공, 실패, 타임아웃 조건에 맞게 다음 라운드로 이동
+    //다음 라운드로 넘어간 경우 이전 라운드 변수값(시간제한, 성공여부)을 모두 초기화 하여 원활한 게임진행 가능
     public void round1()
     {
-        if(UI_control.playtime <= 0 && isround1 == true)
+        if (UI_control.playtime <= 0 && isround1 == true)
         {
             round1_end = true;
             isround2 = true;
@@ -95,7 +98,7 @@ public class Move_key : MonoBehaviour
         }
         if (round2_end == true) isround3 = true;
 
-        if(UI_control.playtime <= 0 && isround2 == true)
+        if (UI_control.playtime <= 0 && isround2 == true)
         {
             round2_end = true;
             isround3 = true;
@@ -118,13 +121,20 @@ public class Move_key : MonoBehaviour
             round3_end = false;
             isround1 = true;
         }
-        if(round3_end == true)
+        if (round3_end == true)
         {
             SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
             round3_end = false;
             isround1 = true;
         }
     }
+    /// </summary>
+
+
+
+    /// <summary>
+    /// 페널티 및 게임 조건함수
+    /// 라인을 이탈하는 경우 위치 초기화 및 시간 페널티(3초) 부과
 
     public void Game_rule() //벽에 닿으면 시간가속 및 위치 초기화
     {
@@ -160,4 +170,6 @@ public class Move_key : MonoBehaviour
         }
         Time.timeScale = 1;
     }
+
+    /// </summary>
 }

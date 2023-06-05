@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class Conveyor_button : MonoBehaviour
 {
+    /// <summary>
+    /// 반응속도 테스트
+    /// 사용자의 반응속도 측정
+    /// 잘못된 입력시 페널티 부여
+    /// </summary>
     public float move_speed = 2.0f;
     public float save_time; //반응시간 저장 변수값
     int err_count; 

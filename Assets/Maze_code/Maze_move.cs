@@ -51,7 +51,7 @@ public class Maze_move : MonoBehaviour
         //if(tutorial_end == true) Tutorial(); //튜토리얼 종료함수
     }
 
-    private void move() //캐릭터 제어
+    private void move() //캐릭터 제어함수, 캐릭터를 회전시켜 자연스럽게 이동하도록 변경
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || 
             Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)){
@@ -82,6 +82,10 @@ public class Maze_move : MonoBehaviour
     //    tutorial_end = false;
     //}
 
+
+    /// <summary>
+    /// 게임 라운드 진행 함수
+    /// 라운드 진행방식은 양손 협응력 테스트와 동일
     private void Stage1()
     {
         if (Maze_UI.playtime <= 0 && isStage1 == true) //1라운드 시간종료시 이동
@@ -106,11 +110,12 @@ public class Maze_move : MonoBehaviour
             Camera1 = true;
             round1_end = false;
         }
-        if(round2_end == true) isStage3 = true;
+        if (round2_end == true) isStage3 = true;
 
-        if(Maze_UI.playtime <= 0 && isStage2 == true) {
-             round2_end = true;
-             isStage3 = true;
+        if (Maze_UI.playtime <= 0 && isStage2 == true)
+        {
+            round2_end = true;
+            isStage3 = true;
         }
     }
 
@@ -141,4 +146,6 @@ public class Maze_move : MonoBehaviour
             isStage1 = true;
         }
     }
+    /// </summary>
+
 }
