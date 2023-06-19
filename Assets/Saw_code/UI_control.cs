@@ -44,9 +44,4 @@ public class UI_control : MonoBehaviour
             
         }
     }
-
-    public void rule() //규칙설명 메뉴
-    {
-        SceneManager.LoadScene("Saw_rule", LoadSceneMode.Additive);
-    }
 }

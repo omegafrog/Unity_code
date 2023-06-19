@@ -27,6 +27,8 @@ public class Maze_move : MonoBehaviour
 
     public static bool Camera1 = false;
     public static bool Camera2 = false;
+
+    public static int timeout_count;
     
     //public static bool tutorial_end; // 튜토리얼 종료확인
 
@@ -34,9 +36,8 @@ public class Maze_move : MonoBehaviour
     {
         CH_speed = 2.5f;
         Trigger_Count = 0;
-        //Tutorial_Count = 0;
+        timeout_count = 0;
 
-        //tutorial_end = false;
         isStage2 = false;
         isStage3 = false;
     }
@@ -44,6 +45,7 @@ public class Maze_move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(timeout_count);
         move(); //움직임 제어
         if(isStage1 == true) Stage1();
         if(isStage2 == true) Stage2(); //1라운드 완료시 라운드 이동
@@ -90,6 +92,7 @@ public class Maze_move : MonoBehaviour
     {
         if (Maze_UI.playtime <= 0 && isStage1 == true) //1라운드 시간종료시 이동
         {
+            timeout_count++;
             round1_end = true;
             isStage2 = true;
         }
@@ -114,6 +117,7 @@ public class Maze_move : MonoBehaviour
 
         if (Maze_UI.playtime <= 0 && isStage2 == true)
         {
+            timeout_count++;
             round2_end = true;
             isStage3 = true;
         }
@@ -129,12 +133,13 @@ public class Maze_move : MonoBehaviour
             float z = 0f;
             transform.position = new Vector3(85.88f, 0.494f, 3.086f);
             transform.rotation = Quaternion.Euler(x, y, z);
-            Maze_UI.playtime = 40;
+            Maze_UI.playtime = 45;
             Camera2 = true;
             round2_end = false;
         }
         if (Maze_UI.playtime <= 0 && isStage3 == true)
         {
+            timeout_count++;
             SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
             round3_end = false;
             isStage1 = true;

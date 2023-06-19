@@ -29,17 +29,21 @@ public class Move_key : MonoBehaviour
     public static bool camera1 = false;
     public static bool camera2 = false;
     
-    public static float count_time = 0; //수정필요
-
+    public static float avr_time;
+    public static int timeout;
+    
     // Start is called before the first frame update
     void Start()
     {
+        avr_time = 0;
+        timeout = 0;
         speed = 0.5f;
         isround2 = false;
         isround3 = false;
     }
     private void Update()
     {
+        Debug.Log(avr_time);
         if(isround1 == true) round1();
         if(isround2 == true) round2();
         if(isround3 == true) round3();
@@ -78,6 +82,7 @@ public class Move_key : MonoBehaviour
     {
         if (UI_control.playtime <= 0 && isround1 == true)
         {
+            timeout++;
             round1_end = true;
             isround2 = true;
         }
@@ -89,8 +94,10 @@ public class Move_key : MonoBehaviour
         isround1 = false;
         if (round1_end == true)
         {
+            //1라운드 시간저장
+            avr_time += UI_control.playtime;
             //Debug.Log("round2 start");
-            transform.position = new Vector3(-35.253f, 4.8321f, 25.077f);
+            transform.position = new Vector3(-35.253f, 4.845f, 25.077f);
             UI_control.playtime = 30;
             camera1 = true;
             round1_end = false;
@@ -100,6 +107,7 @@ public class Move_key : MonoBehaviour
 
         if (UI_control.playtime <= 0 && isround2 == true)
         {
+            timeout++;
             round2_end = true;
             isround3 = true;
         }
@@ -110,19 +118,24 @@ public class Move_key : MonoBehaviour
         isround2 = false;
         if (round2_end == true)
         {
-            transform.position = new Vector3(-53.2738f, 9.0114f, 41.6798f);
+            //2라운드 시간저장
+            avr_time += UI_control.playtime;
+            transform.position = new Vector3(-53.2738f, 9.045f, 41.6798f);
             UI_control.playtime = 30;
             camera2 = true;
             round2_end = false;
         }
         if (UI_control.playtime <= 0 && isround3 == true)
         {
+            timeout++;
             SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
             round3_end = false;
             isround1 = true;
         }
         if (round3_end == true)
         {
+            //3라운드 시간저장
+            avr_time += UI_control.playtime;
             SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
             round3_end = false;
             isround1 = true;
@@ -145,17 +158,17 @@ public class Move_key : MonoBehaviour
         }
         if(limit_trigger == true)
         {
-            transform.position = new Vector3(-60.3598f, 14.071f, 33.196f);
+            transform.position = new Vector3(-60.3598f, 14.093f, 33.196f);
             limit_trigger = false;
         }
         if(limit_trigger2 == true)
         {
-            transform.position = new Vector3(-35.253f, 4.8321f, 25.077f);
+            transform.position = new Vector3(-35.253f, 4.845f, 25.077f);
             limit_trigger2 = false;
         }
         if(limit_trigger3 == true)
         {
-            transform.position = new Vector3(-53.2738f, 9.0114f, 41.6798f);
+            transform.position = new Vector3(-53.2738f, 9.045f, 41.6798f);
             limit_trigger3 = false;
         }
     }

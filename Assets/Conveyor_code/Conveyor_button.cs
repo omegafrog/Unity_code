@@ -13,7 +13,8 @@ public class Conveyor_button : MonoBehaviour
     /// </summary>
     public float move_speed = 2.0f;
     public float save_time; //반응시간 저장 변수값
-    int err_count; 
+    public static int err_count;
+    public static int count;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Conveyor_button : MonoBehaviour
             if (Conveyor_move.sr.material.color == Color.red)
             {
                 Debug.Log("color is red");
+                count++;
                 save_time += Conveyor_move.count; //반응속도 측정값 합산
                 StartCoroutine(buttonpress(1.0f));
             }
@@ -52,6 +54,7 @@ public class Conveyor_button : MonoBehaviour
     void Game_end()
     {
         if(err_count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
+        if (count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
     }
 
     IEnumerator buttonpress(float delay) //버튼 입력시 효과
