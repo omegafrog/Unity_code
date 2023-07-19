@@ -11,10 +11,12 @@ public class Maze_UI : MonoBehaviour
     public static float playtime;
     public bool timestart;
     public Text CounterText;
+    public static float Maze_timer; //시간측정
 
     // Start is called before the first frame update
     void Start()
     {
+        Maze_timer = 0;
         playtime = 30;
         Time.timeScale = 0;
         timestart = false;
@@ -39,6 +41,7 @@ public class Maze_UI : MonoBehaviour
         if (timestart)
         {
             if(playtime > 0) {
+                Maze_timer += Time.deltaTime;
                 playtime -= Time.deltaTime;
                 timeText.text = "제한시간: " + Mathf.Round(playtime) + "초";
             }    

@@ -12,12 +12,14 @@ public class Menu_UI : MonoBehaviour
 
     public Text Maze_count;
     public Text Maze_opt;
+    public Text Maze_time;
 
     public Text Saw_counter;
     public Text Saw_opt;
 
     public Text Cov_count;
     public Text Cov_opt;
+    public Text Cov_avr;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +82,7 @@ public class Menu_UI : MonoBehaviour
     public void Maze_OP()
     {
         Maze_count.text = "충돌횟수: " + Maze_move.Trigger_Count + "번";
+        Maze_time.text = "진행시간: " + Mathf.Round(Maze_UI.Maze_timer) + "초";
         if (Maze_move.Trigger_Count < 2 && Maze_move.Trigger_Count == 0) Maze_opt.text = "결과: 통과";
         else Maze_opt.text = "결과: 실패";
     }
@@ -92,8 +95,8 @@ public class Menu_UI : MonoBehaviour
     public void Conveyor_OP()
     {
         Cov_count.text = "실패횟수: " + Conveyor_button.err_count + "번";
+        Cov_avr.text = "평균 반응속도: " + Conveyor_button.save_time + "ms";
         Cov_opt.text = "결과: 통과";
-        
     }
     /// </summary>
     

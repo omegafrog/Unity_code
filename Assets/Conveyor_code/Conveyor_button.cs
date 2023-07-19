@@ -12,9 +12,9 @@ public class Conveyor_button : MonoBehaviour
     /// 잘못된 입력시 페널티 부여
     /// </summary>
     public float move_speed = 2.0f;
-    public float save_time; //반응시간 저장 변수값
+    public static float save_time; //반응시간 저장 변수값
     public static int err_count;
-    public static int count;
+    public static int succes;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,7 @@ public class Conveyor_button : MonoBehaviour
     {
         if(Conveyor_UI.UI_check == true) Button_press();
         Game_end();
+        //Debug.Log(save_time); //반응시간 저장확인
     }
 
     void Button_press()
@@ -35,16 +36,16 @@ public class Conveyor_button : MonoBehaviour
         {
             if (Conveyor_move.sr.material.color == Color.red)
             {
-                Debug.Log("color is red");
-                count++;
-                save_time += Conveyor_move.count; //반응속도 측정값 합산
+                //Debug.Log("succes");
+                succes++;
+                save_time += Conveyor_move.timer; //반응속도 측정값 합산
                 StartCoroutine(buttonpress(1.0f));
             }
             else
             {
                 StartCoroutine(buttonpress(1.0f));
                 //붉은색이 아닌 다른색의 오브젝트에 입력시 오류추가
-                Debug.Log("error +1");
+                //Debug.Log("error +1");
                 err_count++;
             }
         
@@ -54,7 +55,7 @@ public class Conveyor_button : MonoBehaviour
     void Game_end()
     {
         if(err_count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
-        if (count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
+        if (succes == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
     }
 
     IEnumerator buttonpress(float delay) //버튼 입력시 효과

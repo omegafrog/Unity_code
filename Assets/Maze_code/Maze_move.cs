@@ -15,7 +15,6 @@ public class Maze_move : MonoBehaviour
     public float CH_speed; //캐릳터 이동속도
     Vector3 lookDirection;
     public static int Trigger_Count; // 메인게임 충돌카운트
-    //public static int Tutorial_Count;
     
     public static bool round1_end = false; // 게임1 종료확인
     public static bool round2_end = false; //게임2 종료확인

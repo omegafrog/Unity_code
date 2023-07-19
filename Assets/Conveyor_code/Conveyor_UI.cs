@@ -15,7 +15,7 @@ public class Conveyor_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playtime = 30;
+        playtime = 0;
         Time.timeScale = 0;
         timestart = false;
         UI_check = false;
@@ -39,7 +39,7 @@ public class Conveyor_UI : MonoBehaviour
     public void time_check()
     {
         if(timestart){
-            playtime -= Time.deltaTime;
+            playtime += Time.deltaTime;
             //timeText.text = "제한시간: " + Mathf.Round(playtime) + "초";
         }
     }

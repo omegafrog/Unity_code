@@ -24,7 +24,7 @@ public class Conveyor_move : MonoBehaviour
     
     public float object_speed;
     public int i;
-    public static float count;
+    public static float timer;
 
     public bool object_tr;
     public static bool timer_start;
@@ -36,7 +36,7 @@ public class Conveyor_move : MonoBehaviour
         max = 100;
         //게임 시작시 무작위 값으로 초기화
         i = Random.Range(min, max); 
-        count = 0;
+        timer = 0;
         object_speed = 4.0f;
         object_tr = false;
         timer_start = false;
@@ -44,6 +44,7 @@ public class Conveyor_move : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(timer); //시간 시작확인
         Squence(i);
         Move();
         Timer();
@@ -64,11 +65,10 @@ public class Conveyor_move : MonoBehaviour
 
     public void Timer() //반응속도 측정 타이머
     {
-        count = 0;
+        timer = 0;
         if (timer_start)
         {
-            count += Time.deltaTime;
-            //Debug.Log(count);
+            timer += Time.deltaTime;
         }
     }
 
