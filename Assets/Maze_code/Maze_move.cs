@@ -45,7 +45,7 @@ public class Maze_move : MonoBehaviour
     void Update()
     {
         //Debug.Log(timeout_count);
-        move(); //움직임 제어
+        //move(); //움직임 제어
         if(isStage1 == true) Stage1();
         if(isStage2 == true) Stage2(); //1라운드 완료시 라운드 이동
         if(isStage3 == true) Stage3(); //2라운드 완료시 라운드 이동
