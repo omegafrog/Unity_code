@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 /// <summary>
-/// 23/2/13
+/// 23/8/8
 /// 수정사항
 /// 페널티 방식 수정 -3 => 시간가속
+/// 이동방식 키보드 -> 버튼입력
 /// </summary>
 public class Move_key : MonoBehaviour
 {
@@ -31,6 +33,12 @@ public class Move_key : MonoBehaviour
     
     public static float avr_time;
     public static int timeout;
+
+    public bool up;
+    public bool down;
+    public bool left;
+    public bool right;
+
     
     // Start is called before the first frame update
     void Start()
@@ -43,7 +51,7 @@ public class Move_key : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(avr_time);
+        //Debug.Log(avr_time);
         if(isround1 == true) round1();
         if(isround2 == true) round2();
         if(isround3 == true) round3();
@@ -54,12 +62,39 @@ public class Move_key : MonoBehaviour
         Game_rule();
     }
 
+    public void Up()
+    {
+        up = true;
+    }
+    public void Down()
+    {
+        down = true;
+    }
+    public void Right()
+    {
+        right = true;
+    }
+    public void Left()
+    {
+        left = true;
+    }
+    public void Stop()
+    {
+        up = false;
+        down = false;
+        right = false;
+        left = false;
+    }
     void Move() //메인 오브젝트 이동함수
     {
-        if (Input.GetKey(KeyCode.UpArrow)) transform.Translate(Vector3.forward * speed * Time.unscaledDeltaTime);
-        if (Input.GetKey(KeyCode.DownArrow)) transform.Translate(Vector3.back * speed * Time.unscaledDeltaTime);
-        if (Input.GetKey(KeyCode.A)) transform.Translate(Vector3.left * speed * Time.unscaledDeltaTime);
-        if (Input.GetKey(KeyCode.D)) transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
+        if (up == true) 
+            transform.Translate(Vector3.forward * speed * Time.unscaledDeltaTime);
+        if (down == true) 
+            transform.Translate(Vector3.back * speed * Time.unscaledDeltaTime);
+        if (left == true) 
+            transform.Translate(Vector3.left * speed * Time.unscaledDeltaTime);
+        if (right == true) 
+            transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other) //충돌감지 함수
