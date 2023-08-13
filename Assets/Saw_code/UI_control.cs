@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UI_control : MonoBehaviour
 {
     public GameObject Panel;
-    public Text timeText;
+    public TextMeshProUGUI Tp_time;
     public static float playtime;
     public bool timestart;
 
@@ -39,9 +40,9 @@ public class UI_control : MonoBehaviour
         // playtime += Time.deltaTime;
         // timeText.text = "Play time : " + playtime.ToString("N2") + "s";
             playtime -= Time.deltaTime;
-            timeText.text = "제한시간: " + Mathf.Round(playtime) + "초";
+            Tp_time.text = Mathf.Round(playtime) + "s";
             //Debug.Log(Mathf.Round(Move_key.count_time)); //시간확인
-            
+
         }
     }
 }

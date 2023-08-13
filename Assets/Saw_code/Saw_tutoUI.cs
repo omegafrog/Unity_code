@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Saw_tutoUI : MonoBehaviour
 {
+    
     public GameObject Panel;
-    public Text timeText;
+    //public Text timeText;
+    public TextMeshProUGUI Tptext;
     public static float playtime;
     public bool timestart;
 
@@ -36,7 +39,8 @@ public class Saw_tutoUI : MonoBehaviour
         if (timestart)
         {
             playtime -= Time.deltaTime;
-            timeText.text = "제한시간: " + Mathf.Round(playtime) + "초";
+            //timeText.text = Mathf.Round(playtime) + "초";
+            Tptext.text = Mathf.Round(playtime) + "s";
         }
     }
 
