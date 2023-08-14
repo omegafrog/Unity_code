@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Saw_test.unity
-    guid: 2483f449a9c234e41864f890106887d0
-  - enabled: 1
-    path: Assets/Scenes/Maze_test.unity
-    guid: e952198ddf0a6dc4fbda52fbf6b84794
+    path: Assets/Scenes/Login_scene.unity
+    guid: fc660805cc93ff4499a329dc2046439d
   - enabled: 1
     path: Assets/Scenes/Main_menu.unity
     guid: a63ed65d0578baf4693091f5f95f5150
   - enabled: 1
+    path: Assets/Scenes/Maze_test.unity
+    guid: e952198ddf0a6dc4fbda52fbf6b84794
+  - enabled: 1
     path: Assets/Scenes/Maze_tuto.unity
     guid: 1a4483e6c40ff98449ae89e5a602e5d3
+  - enabled: 1
+    path: Assets/Scenes/Saw_test.unity
+    guid: 2483f449a9c234e41864f890106887d0
   - enabled: 1
     path: Assets/Scenes/Saw_tuto.unity
     guid: 9e599b1d0215e9e4d82fc2f72238b01d
