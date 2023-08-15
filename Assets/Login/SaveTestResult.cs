@@ -30,9 +30,16 @@ public class SaveTestResult : MonoBehaviour
     public void Save()
     {
         print("clicked");
-        StartCoroutine(SendTestResultTest());
+         TestResult testResult = new TestResult(
+            new TestResult.Twohand(true, 0, 200), 
+            new TestResult.Conveyor(true, 1234), 
+            new TestResult.DigitSpan(true), 
+            new TestResult.Maze(false, Maze_move.Trigger_Count), 
+            new TestResult.DecisionMaking(true, 123, 2, 3));
+
+        StartCoroutine(SendTestResultTest(testResult));
     }
-    IEnumerator SendTestResultTest()
+    IEnumerator SendTestResultTest(TestResult testResult)
     {
         print("coroutine start");
         // 백엔드 서버 주소
@@ -41,7 +48,7 @@ public class SaveTestResult : MonoBehaviour
         string url = "https://" + host + uri;
         // post form 내용 구성
         WWWForm form = new WWWForm();
-        string result = JsonUtility.ToJson(testTestResult);
+        string result = JsonUtility.ToJson(testResult);
         print(result);
 
         print(LoginManager.loginToken);
