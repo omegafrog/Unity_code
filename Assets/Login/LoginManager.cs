@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 namespace Login
 {
     public class LoginManager : MonoBehaviour
@@ -10,12 +11,12 @@ namespace Login
         public static string loginToken;
         public InputField username;
         public InputField password;
-
+        public static string ID_save;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
@@ -55,7 +56,7 @@ namespace Login
                 // 이걸로 form에다가 로그인 정보 넣음.
                 form.AddField("username", username.text);
                 form.AddField("password", password.text);
-
+                ID_save = username.text;
                 // form을 이용해서 해당 주소로 요청 보냄
                 UnityWebRequest www = UnityWebRequest.Post(url, form);
 
@@ -75,6 +76,7 @@ namespace Login
                     // 로그인 시에 result.results.token을 함께 건네줘야 함.
                     // 그래서 전역변수로 토큰을 저장함.
                     loginToken = result.results.token;
+                    SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
                     print("로그인 종료");
                 }
                 else
@@ -94,3 +96,6 @@ namespace Login
     }
 
 }
+
+
+//SceneManager.LoadScene("Main_menu", LoadSceneMode.Single); //로그인 확인 코드뒤 삽입

@@ -13,6 +13,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Move_key : MonoBehaviour
 {
+    public static bool two_hand_result;
     public float speed;
     public bool isCollision = false;
     public bool limit_trigger = false;
@@ -48,6 +49,7 @@ public class Move_key : MonoBehaviour
         speed = 0.5f;
         isround2 = false;
         isround3 = false;
+        two_hand_result = false;
     }
     private void Update()
     {
@@ -150,13 +152,14 @@ public class Move_key : MonoBehaviour
 
     public void round3() //3라운드
     {
+        two_hand_result = true;
         isround2 = false;
         if (round2_end == true)
         {
             //2라운드 시간저장
             avr_time += UI_control.playtime;
-            transform.position = new Vector3(-53.2738f, 9.045f, 41.6798f);
-            UI_control.playtime = 30;
+            transform.position = new Vector3(-54.429f, 9.038f, 41.681f);
+            UI_control.playtime = 45;
             camera2 = true;
             round2_end = false;
         }
@@ -203,7 +206,7 @@ public class Move_key : MonoBehaviour
         }
         if(limit_trigger3 == true)
         {
-            transform.position = new Vector3(-53.2738f, 9.045f, 41.6798f);
+            transform.position = new Vector3(-54.429f, 9.038f, 41.681f);
             limit_trigger3 = false;
         }
     }

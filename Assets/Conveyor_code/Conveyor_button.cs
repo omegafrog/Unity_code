@@ -15,11 +15,13 @@ public class Conveyor_button : MonoBehaviour
     public static float save_time; //반응시간 저장 변수값
     public static int err_count;
     public static int succes;
+    public static bool conveyor_result;
     // Start is called before the first frame update
     void Start()
     {
         save_time = 0;
         err_count = 0;
+        conveyor_result = false;
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Conveyor_button : MonoBehaviour
     {
         if(Conveyor_UI.UI_check == true) Button_press();
         Game_end();
+
         //Debug.Log(save_time); //반응시간 저장확인
     }
 
@@ -54,6 +57,7 @@ public class Conveyor_button : MonoBehaviour
 
     void Game_end()
     {
+        conveyor_result =true;
         if(err_count == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
         if (succes == 5) SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
     }

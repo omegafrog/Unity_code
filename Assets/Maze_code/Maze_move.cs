@@ -30,7 +30,7 @@ public class Maze_move : MonoBehaviour
     public static bool Camera2 = false;
 
     public static int timeout_count;
-    
+    public static bool maze_result;
     //public static bool tutorial_end; // 튜토리얼 종료확인
 
     void Start()
@@ -41,6 +41,7 @@ public class Maze_move : MonoBehaviour
 
         isStage2 = false;
         isStage3 = false;
+        maze_result = false;
     }
 
     // Update is called once per frame
@@ -127,6 +128,7 @@ public class Maze_move : MonoBehaviour
     private void Stage3() //2라운드 종료시 캐릭터 이동
     {
         isStage2 = false;
+        maze_result = true;
         if (round2_end == true)//3라운드 이동시 위치, 방향설정
         {
             float y = 90f;

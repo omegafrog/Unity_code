@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Login;
 
 public class Menu_UI : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class Menu_UI : MonoBehaviour
 
     public void menu_ID()
     {
-        user_ID.text = "ID: 2017112234";
+        user_ID.text ="User: " + LoginManager.ID_save;
     }
 
     /// <summary>
@@ -83,20 +84,36 @@ public class Menu_UI : MonoBehaviour
     {
         Maze_count.text = "충돌횟수: " + Maze_move.Trigger_Count + "번";
         Maze_time.text = "진행시간: " + Mathf.Round(Maze_UI.Maze_timer) + "초";
-        if (Maze_move.Trigger_Count < 2 && Maze_move.Trigger_Count == 0) Maze_opt.text = "결과: 통과";
-        else Maze_opt.text = "결과: 실패";
+        if (Maze_move.maze_result)
+        {
+            if (Maze_move.Trigger_Count < 2 && Maze_move.Trigger_Count == 0) Maze_opt.text = "결과: 통과";
+            else Maze_opt.text = "결과: 실패";
+        }
+        else Maze_opt.text = "결과: 검사 미실시";
     }
     public void Saw_OP()
     {
         Saw_counter.text = "진행시간: " + Mathf.Floor(Move_key.avr_time / 3f * 100f) / 100f + "초";
-        if (Move_key.timeout < 1) Saw_opt.text = "결과: 통과";
-        else Saw_opt.text = "결과: 실패";
+        if (Move_key.two_hand_result)
+        {
+            if (Move_key.timeout < 1) Saw_opt.text = "결과: 통과";
+            else Saw_opt.text = "결과: 실패";
+        }
+        else Saw_opt.text = "결과: 검사 미실시";
+        
+        
     }
     public void Conveyor_OP()
     {
         Cov_count.text = "실패횟수: " + Conveyor_button.err_count + "번";
         Cov_avr.text = "평균 반응속도: " + Conveyor_button.save_time + "ms";
-        Cov_opt.text = "결과: 통과";
+        if (Conveyor_button.conveyor_result)
+        {
+            Cov_opt.text = "결과: 통과";
+        }
+        else Cov_opt.text = "결과: 검사 미실시";
+        
+        
     }
     /// </summary>
     
