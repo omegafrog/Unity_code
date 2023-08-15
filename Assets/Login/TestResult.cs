@@ -4,12 +4,12 @@
 public class TestResult
 {
     [Serializable]
-    public class Twohand
+    public class Conveyor
     {
         public bool isPassed;
         public int failedCount;
         public double minResponseTime;
-        public Twohand(bool isPassed, int failedCount, double minResponseTime)
+        public Conveyor(bool isPassed, int failedCount, double minResponseTime)
         {
             this.isPassed = isPassed;
             this.failedCount = failedCount;
@@ -17,11 +17,11 @@ public class TestResult
         }
     }
     [Serializable]
-    public class Conveyor
+    public class Twohand
     {
         public bool isPassed;
         public double elapsedTime;
-        public Conveyor(bool isPassed, double elapsedTime)
+        public Twohand(bool isPassed, double elapsedTime)
         {
             this.isPassed = isPassed;
             this.elapsedTime = elapsedTime;
